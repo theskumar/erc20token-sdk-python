@@ -5,7 +5,11 @@
 import backoff
 import requests
 from web3 import HTTPProvider
-from web3.utils.compat import make_post_request
+
+try:
+    from web3.utils.request import make_post_request
+except ImportError: 
+    from web3.utils.compat import make_post_request
 
 
 class RetryHTTPProvider(HTTPProvider):
